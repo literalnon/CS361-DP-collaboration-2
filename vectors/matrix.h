@@ -12,25 +12,16 @@ private:
 
 public:
 
-    Matrix(size_t t_m = 2,size_t t_n = 2): _m(t_m), _n(t_n), _matrix(
-        static_cast <T *> (0 == t_m * t_n ? nullptr :
-                           operator new (t_m * t_n * sizeof (T)))){cout << "constructor t_m t_n" <<endl;
-                           cout << _matrix << endl;}
+    Matrix(size_t t_m = 2,size_t t_n = 2): _m(t_m), _n(t_n){
+        _matrix = new T[t_m * t_n];
+    }
 
     template<typename... Args>
     Matrix(size_t t_m,size_t t_n, Args... args): _m(t_m), _n(t_n){
-        cout << "constructor args" << endl;
-        try{
-
             _matrix = new T[t_m * t_n]{args...};
-            cout << _matrix << endl;
-        }catch(...){
-             _matrix = static_cast <T *>(operator new (t_m * t_n * sizeof (T)));
-             cout << _matrix << endl;
-        }
     }
 
-    Matrix(size_t t_m,size_t t_n, T * t_arr): _m(t_m), _n(t_n), _matrix(t_arr){cout << "constructor t_arr" << endl;}
+    Matrix(size_t t_m,size_t t_n, T * t_arr): _m(t_m), _n(t_n), _matrix(t_arr){}
 
     void printMatrix() const {
         for(size_t i = 0; i < _m; ++i){
@@ -52,19 +43,7 @@ public:
 
     ~Matrix<T>(){
         cout << "destructor " << _m << " " << _n << endl;
-        if(_matrix){
-
-            for(T * ptr_elem = _matrix; ptr_elem < _matrix + _m * _n; ++ptr_elem){
-                destroy(ptr_elem);
-                ++ptr_elem;
-            }
-            operator delete (_matrix);
-        }
-
-    }
-
-    void destroy(T * elem){
-        elem->~T();
+        delete [] _matrix;
     }
 
     Matrix<T> operator+(const Matrix<T> & r_value) const {

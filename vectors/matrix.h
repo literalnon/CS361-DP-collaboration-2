@@ -13,15 +13,22 @@ private:
 public:
 
     Matrix(size_t t_m = 2,size_t t_n = 2): _m(t_m), _n(t_n){
-        _matrix = new T[t_m * t_n];
+        cout << "constructor" << _m << " " << _n << endl;
+        _matrix = new T[t_m * t_n];// bad alloc или исключение в конструкторе
     }
 
     template<typename... Args>
     Matrix(size_t t_m,size_t t_n, Args... args): _m(t_m), _n(t_n){
-            _matrix = new T[t_m * t_n]{args...};
+        cout << "constructor" << _m << " " << _n << endl;
+            try{
+                _matrix = new T[t_m * t_n]{args...};//добавляется ошибка в аргументах
+            }catch(...){
+                cout << "bad args..." << endl;
+                 _matrix = new T[t_m * t_n];
+            }
     }
 
-    Matrix(size_t t_m,size_t t_n, T * t_arr): _m(t_m), _n(t_n), _matrix(t_arr){}
+    Matrix(size_t t_m,size_t t_n, T * t_arr): _m(t_m), _n(t_n), _matrix(t_arr){cout << "constructor" << _m << " " << _n << endl;}
 
     void printMatrix() const {
         for(size_t i = 0; i < _m; ++i){
@@ -33,17 +40,41 @@ public:
     }
 
     T& operator()(int i, int j){
-        return _matrix[i * _m + j];
+        return _matrix[i * _m + j];//доступ по индексу, возможно исключение, которое выбросится наружу
     }
 
     Matrix<T>(Matrix<T> && other){
         cout << " move constructor " << endl;
+        swap(*this, other);
+        other._matrix = nullptr;
+    }
 
+    Matrix<T> operator=(const Matrix<T> & other){
+        if(this != &other){
+            Matrix<T> t_m(other);
+            swap(*this, t_m);
+        }
+        return *this;
+    }
+
+    friend void swap(Matrix<T> & m_f, Matrix<T> & m_s) throw(){
+        swap(m_f._matrix, m_s._matrix);
+        swap(m_f._m, m_s._m);
+        swap(m_f._n, m_s._n);
+    }
+
+    Matrix<T>(const Matrix<T> & other){
+        cout << " copy constructor " << endl;
+        _n = other._n;
+        _m = other._m;
+        _matrix = static_cast<T*>(operator new(_n * _m * sizeof(T)));
+        copy(other._matrix, other._matrix + _n * _m, _matrix);
     }
 
     ~Matrix<T>(){
         cout << "destructor " << _m << " " << _n << endl;
-        delete [] _matrix;
+        if(_matrix)
+            delete [] _matrix;
     }
 
     Matrix<T> operator+(const Matrix<T> & r_value) const {

@@ -15,9 +15,9 @@ int main(){
     //cout << " m * v " << m(1, 2) << endl;
     //(m * m1).printMatrix();
     /*cout << " m - m1 " << endl;
-    (m - m1).printMatrix();
+    (m - m1).printMatrix();*/
     cout << " m * m1 " << endl;
-    (m * m1).printMatrix();
+    (m * m1).printMatrix();/*
     cout << " matrix m * 10 " << endl;
     (m * 10).printMatrix();
     cout << " matrix " << endl;

@@ -1,8 +1,6 @@
 #ifndef MATRIX_H_INCLUDED
 #define MATRIX_H_INCLUDED
 
-using namespace std;
-
 template<typename T>
 class Matrix {
 private:
@@ -13,30 +11,32 @@ private:
 public:
 
     Matrix(size_t t_m = 2,size_t t_n = 2): _m(t_m), _n(t_n){
-        cout << "constructor" << _m << " " << _n << endl;
         _matrix = new T[t_m * t_n];// bad alloc или исключение в конструкторе
     }
 
     template<typename... Args>
     Matrix(size_t t_m,size_t t_n, Args... args): _m(t_m), _n(t_n){
-        cout << "constructor" << _m << " " << _n << endl;
             try{
                 _matrix = new T[t_m * t_n]{args...};//добавляется ошибка в аргументах
+                ///std aligned_storage
             }catch(...){
-                cout << "bad args..." << endl;
-                 _matrix = new T[t_m * t_n];
+                 throw std::runtime_error("bad arguments");
             }
     }
 
-    Matrix(size_t t_m,size_t t_n, T * t_arr): _m(t_m), _n(t_n), _matrix(t_arr){cout << "constructor" << _m << " " << _n << endl;}
+    Matrix(size_t t_m,size_t t_n, T * t_arr): _m(t_m), _n(t_n){
+        _matrix = new T[t_n * t_m];
+        std::copy(t_arr, t_arr + t_n * t_m, _matrix);
+    }
+    //_matrix(static_cast<T*>(operator new(_m * _n * sizeof(T))))
 
     void printMatrix() const {
         for(size_t i = 0; i < _m; ++i){
             for(size_t j = 0; j < _n; ++j)
-                cout << _matrix[j + i * _n] << " | ";
-            cout << endl;
+                std::cout << _matrix[j + i * _n] << " | ";
+            std::cout << std::endl;
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 
     T& operator()(int i, int j){
@@ -44,35 +44,35 @@ public:
     }
 
     Matrix<T>(Matrix<T> && other){
-        cout << " move constructor " << endl;
-        swap(*this, other);
+        //cout << " move constructor " << endl;
+        std::swap(*this, other);
         other._matrix = nullptr;
     }
 
-    Matrix<T> operator=(const Matrix<T> & other){
+    Matrix<T> & operator=(const Matrix<T> & other){
         if(this != &other){
             Matrix<T> t_m(other);
-            swap(*this, t_m);
+            std::swap(*this, t_m);
         }
         return *this;
     }
 
-    friend void swap(Matrix<T> & m_f, Matrix<T> & m_s) throw(){
-        swap(m_f._matrix, m_s._matrix);
-        swap(m_f._m, m_s._m);
-        swap(m_f._n, m_s._n);
+    friend void swap(Matrix<T> & m_f, Matrix<T> & m_s) noexcept {
+        std::swap(m_f._matrix, m_s._matrix);
+        std::swap(m_f._m, m_s._m);
+        std::swap(m_f._n, m_s._n);
     }
 
     Matrix<T>(const Matrix<T> & other){
-        cout << " copy constructor " << endl;
+        //cout << " copy constructor " << endl;
         _n = other._n;
         _m = other._m;
-        _matrix = static_cast<T*>(operator new(_n * _m * sizeof(T)));
-        copy(other._matrix, other._matrix + _n * _m, _matrix);
+        _matrix = new T[_n * _m];//static_cast<T*>(operator new(_n * _m * sizeof(T)));
+        std::copy(other._matrix, other._matrix + _n * _m, _matrix);
     }
 
-    ~Matrix<T>(){
-        cout << "destructor " << _m << " " << _n << endl;
+    virtual ~Matrix<T>(){//!!!
+        //cout << "destructor " << _m << " " << _n << endl;
         if(_matrix)
             delete [] _matrix;
     }
@@ -101,7 +101,7 @@ public:
         Matrix<T> t_m(_m, r_value._n);
 
         if(_n != r_value._m)
-            cout << "Error: dimensions must match! " << endl;
+            throw std::runtime_error("bad arguments");
         else
             for(size_t i = 0; i < _m; ++i)
                 for(size_t j = 0; j < r_value._n; ++j)

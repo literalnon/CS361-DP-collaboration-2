@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
-1490012951 source:/home/dmitry/vectors/main.cpp
+1490251747 source:/home/dmitry/vectors/main.cpp
 	<iostream>
 	"matrix.h"
 
-1490013313 /home/dmitry/vectors/matrix.h
+1490252475 /home/dmitry/vectors/matrix.h
 

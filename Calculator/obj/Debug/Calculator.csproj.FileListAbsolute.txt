@@ -1,0 +1,14 @@
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\bin\Debug\Calculator.exe.config
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\bin\Debug\Calculator.exe
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\bin\Debug\Calculator.pdb
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator.csprojResolveAssemblyReference.cache
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\MainWindow.g.cs
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\App.g.cs
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator_MarkupCompile.cache
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator_MarkupCompile.lref
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\MainWindow.baml
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator.g.resources
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator.Properties.Resources.resources
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator.csproj.GenerateResource.Cache
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator.exe
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator.pdb

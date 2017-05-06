@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight">
+        Title="Set calculator" Height="350" Width="525" SizeToContent="WidthAndHeight">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -17,7 +17,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Name="FormulaText" Text="([2,3]+[3,4])-[3]" HorizontalAlignment="Right" Margin="5" FontSize="18"/>
+            <TextBlock Name="FormulaText" HorizontalAlignment="Right" Margin="5" FontSize="20"/>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -31,17 +31,61 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <Button Name="UnionConst" Grid.Row="0" Grid.Column="0" Width="70" Margin="5">F∪c</Button>
-                <Button Name="UnionVar" Grid.Row="0" Grid.Column="1" Width="70" Margin="5">F∪v</Button>
-                <Button Name="IntersectConst" Grid.Row="0" Grid.Column="2" Width="70" Margin="5">F∩c</Button>
-                <Button Name="IntersectVar" Grid.Row="0" Grid.Column="3" Width="70" Margin="5">F∩v</Button>
-                <Button Name="DifferenceConst" Grid.Row="1" Grid.Column="0" Width="70" Margin="5">F∖c</Button>
-                <Button Name="DifferenceVar" Grid.Row="1" Grid.Column="1" Width="70" Margin="5">F∖v</Button>
-                <Button Name="SymmetricDifferenceConst" Grid.Row="1" Grid.Column="2" Width="70" Margin="5">F∆c</Button>
-                <Button Name="SymmetricDifferenceVar" Grid.Row="1" Grid.Column="3" Width="70" Margin="5">F∆v</Button>
-                <Button Name="Eratosphene" Grid.Row="2" Grid.Column="0" Width="70" Margin="5">F#n</Button>
-                <Button Name="Calculate" Grid.Row="2" Grid.Column="2" Width="70" Margin="5">=</Button>
-                <Button Name="ClearEntry" Grid.Row="2" Grid.Column="3" Width="70" Margin="5">CE</Button>
+                <Button 
+                    Name="UnionConst" 
+                    Click="ConstOperationClick" 
+                    Grid.Row="0" Grid.Column="0" 
+                    Width="70" Margin="5">F∪c</Button>
+                <Button 
+                    Name="UnionVar" 
+                    Click="VariableOperationClick" 
+                    Grid.Row="0" Grid.Column="1" 
+                    Width="70" Margin="5">F∪v</Button>
+                <Button
+                    Name="IntersectConst" 
+                    Click="ConstOperationClick"
+                    Grid.Row="0" Grid.Column="2" 
+                    Width="70" Margin="5">F∩c</Button>
+                <Button 
+                    Name="IntersectVar"
+                    Click="VariableOperationClick" 
+                    Grid.Row="0" Grid.Column="3" 
+                    Width="70" Margin="5">F∩v</Button>
+                <Button 
+                    Name="DifferenceConst" 
+                    Click="ConstOperationClick"
+                    Grid.Row="1" Grid.Column="0"
+                    Width="70" Margin="5">F∖c</Button>
+                <Button 
+                    Name="DifferenceVar"
+                    Click="VariableOperationClick" 
+                    Grid.Row="1" Grid.Column="1" 
+                    Width="70" Margin="5">F∖v</Button>
+                <Button 
+                    Name="SymmetricDifferenceConst" 
+                    Click="ConstOperationClick"
+                    Grid.Row="1" Grid.Column="2" 
+                    Width="70" Margin="5">F∆c</Button>
+                <Button 
+                    Name="SymmetricDifferenceVar"
+                    Click="VariableOperationClick" 
+                    Grid.Row="1" Grid.Column="3" 
+                    Width="70" Margin="5">F∆v</Button>
+                <Button 
+                    Name="Eratosphene" 
+                    Click="EratospheneClick" 
+                    Grid.Row="2" Grid.Column="0" 
+                    Width="70" Margin="5">F#n</Button>
+                <Button 
+                    Name="Calculate"
+                    Click="CalculateClick" 
+                    Grid.Row="2" Grid.Column="2" 
+                    Width="70" Margin="5">=</Button>
+                <Button 
+                    Name="ClearEntry" 
+                    Click="ClearEntryClick" 
+                    Grid.Row="2" Grid.Column="3" 
+                    Width="70" Margin="5">CE</Button>
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
@@ -49,18 +93,22 @@
                 <RowDefinition/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <ListBox Name="ListOfVariables" Margin="5">
-                <TextBlock Text="a = [4,5]"/>
-                <TextBlock Text="b = []"/>
-                <TextBlock Text="c = (([]+[1])/[42])#11"/>
-            </ListBox>
+            <ListBox Name="ListOfVariables" Margin="5" SelectionMode="Single" SelectionChanged="VariableSelectionChanged"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Name="AddVariable" Grid.Column="0" Margin="5">Add</Button>
-                <Button Name="RemoveVariable" Grid.Column="1" Margin="5">Remove</Button>
+                <Button 
+                    Name="AddVariable" 
+                    Click="AddVariableClick"
+                    Grid.Column="0" 
+                    Margin="5">Add</Button>
+                <Button 
+                    Name="RemoveVariable" 
+                    Click="RemoveVariableClick"
+                    Grid.Column="1" 
+                    Margin="5">Remove</Button>
             </Grid>
         </Grid>
     </Grid>

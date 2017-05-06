@@ -15,14 +15,104 @@ using System.Windows.Shapes;
 
 namespace Calculator
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private Formula rootFormula = new ConstFormula(new SortedSet<int>());
+        private List<VariableFormula> savedVariables = new List<VariableFormula>();
+
         public MainWindow()
         {
             InitializeComponent();
+            UpdateFormulaText();
+            SetVariableOperationEnability(false);
+        }
+
+        private void UpdateFormulaText()
+        {
+            FormulaText.Text = rootFormula.ToString();
+        }
+
+        private Formula ObtainConstant()
+        {
+            var constantDialog = new ConstantDialog();
+            constantDialog.Hide();
+            if ((bool) constantDialog.ShowDialog())
+            {
+                return new ConstFormula(constantDialog.resultSet);
+            }
+            else 
+                return null;
+        }
+
+        private Formula ObtainVariable()
+        {
+            return savedVariables[ListOfVariables.SelectedIndex];
+        }
+
+        private void ConstOperationClick(object sender, RoutedEventArgs e)
+        {
+            var rhs = ObtainConstant();
+            if (UnionConst == sender)
+                rootFormula = new UnionFormula(rootFormula, rhs);
+            else if (IntersectConst == sender)
+                rootFormula = new IntersectFormula(rootFormula, rhs);
+            else if (DifferenceConst == sender)
+                rootFormula = new DifferenceFormula(rootFormula, rhs);
+            else if (SymmetricDifferenceConst == sender)
+                rootFormula = new SymmetricDifferenceFormula(rootFormula, rhs);
+            UpdateFormulaText();
+        }
+
+        private void VariableOperationClick(object sender, RoutedEventArgs e)
+        {
+            var rhs = ObtainVariable();
+            if (UnionVar == sender)
+                rootFormula = new UnionFormula(rootFormula, rhs);
+            else if (IntersectVar == sender)
+                rootFormula = new IntersectFormula(rootFormula, rhs);
+            else if (DifferenceVar == sender)
+                rootFormula = new DifferenceFormula(rootFormula, rhs);
+            else if (SymmetricDifferenceVar == sender)
+                rootFormula = new SymmetricDifferenceFormula(rootFormula, rhs);
+            UpdateFormulaText();
+        }
+
+        private void EratospheneClick(object sender, RoutedEventArgs e)
+        {
+            UpdateFormulaText();
+        }
+
+        private void CalculateClick(object sender, RoutedEventArgs e)
+        {
+            UpdateFormulaText();
+        }
+
+        private void ClearEntryClick(object sender, RoutedEventArgs e)
+        {
+            rootFormula = ObtainConstant();
+            UpdateFormulaText();
+        }
+
+        private void AddVariableClick(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void RemoveVariableClick(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void SetVariableOperationEnability(bool enability)
+        {
+            UnionVar.IsEnabled = enability;
+            IntersectVar.IsEnabled = enability;
+            DifferenceVar.IsEnabled = enability;
+            SymmetricDifferenceVar.IsEnabled = enability;
+        }
+
+        private void VariableSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedVariable = ListOfVariables.SelectedIndex;
+            SetVariableOperationEnability(-1 != selectedVariable);
         }
     }
 }

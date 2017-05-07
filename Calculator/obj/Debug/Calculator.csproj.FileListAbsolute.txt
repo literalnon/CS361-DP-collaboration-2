@@ -14,3 +14,5 @@ C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator.
 C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\Calculator.pdb
 C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\ConstantDialog.g.cs
 C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\ConstantDialog.baml
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\VariableNameDialog.g.cs
+C:\Users\Nolan\Desktop\CS361-DP-collaboration-2\Calculator\obj\Debug\VariableNameDialog.baml

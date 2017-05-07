@@ -1,0 +1,18 @@
+﻿<Window x:Class="Calculator.VariableNameDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        Height="300" Width="300">
+    <StackPanel Margin="5">
+        <TextBlock Text="Enter variable name" Margin="0 0 0 5"/>
+        <TextBox Name="ResponseTextBox" Width="150" Margin="0 0 0 5" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="OK" Click="OKButton_Click" Width="50" Margin="0 0 5 0" IsDefault="True"/>
+            <Button Content="Cancel" Click="CancelButton_Click" Width="50"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

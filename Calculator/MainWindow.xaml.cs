@@ -37,11 +37,8 @@ namespace Calculator
             var constantDialog = new ConstantDialog();
             constantDialog.Hide();
             if ((bool) constantDialog.ShowDialog())
-            {
                 return new ConstFormula(constantDialog.resultSet);
-            }
-            else 
-                return null;
+            return null;
         }
 
         private Formula ObtainVariable()
@@ -52,6 +49,8 @@ namespace Calculator
         private void ConstOperationClick(object sender, RoutedEventArgs e)
         {
             var rhs = ObtainConstant();
+            if (null == rhs)
+                return;
             if (UnionConst == sender)
                 rootFormula = new UnionFormula(rootFormula, rhs);
             else if (IntersectConst == sender)
@@ -80,10 +79,12 @@ namespace Calculator
         private void EratospheneClick(object sender, RoutedEventArgs e)
         {
             UpdateFormulaText();
+            // ToDo: use external library to implement this
         }
 
         private void CalculateClick(object sender, RoutedEventArgs e)
         {
+            rootFormula = new ConstFormula(rootFormula.Evaluate());
             UpdateFormulaText();
         }
 
@@ -95,10 +96,19 @@ namespace Calculator
 
         private void AddVariableClick(object sender, RoutedEventArgs e)
         {
+            var dialog = new VariableNameDialog();
+            if (!(bool)dialog.ShowDialog())
+                return;
+            var variableName = dialog.VariableName;
+            savedVariables.Add(new VariableFormula(variableName, rootFormula));
+            var textBox = new TextBlock();
+            textBox.Text = variableName + " = " + rootFormula.ToString();
+            ListOfVariables.Items.Add(textBox);
         }
 
         private void RemoveVariableClick(object sender, RoutedEventArgs e)
         {
+            ListOfVariables.Items.RemoveAt(ListOfVariables.SelectedIndex);
         }
 
         private void SetVariableOperationEnability(bool enability)
@@ -107,6 +117,7 @@ namespace Calculator
             IntersectVar.IsEnabled = enability;
             DifferenceVar.IsEnabled = enability;
             SymmetricDifferenceVar.IsEnabled = enability;
+            RemoveVariable.IsEnabled = enability;
         }
 
         private void VariableSelectionChanged(object sender, SelectionChangedEventArgs e)

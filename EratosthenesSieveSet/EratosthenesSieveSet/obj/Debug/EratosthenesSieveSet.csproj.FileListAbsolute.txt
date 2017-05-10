@@ -1,0 +1,10 @@
+c:\users\donald\documents\visual studio 2015\Projects\EratosthenesSieveSet\EratosthenesSieveSet\bin\Debug\EratosthenesSieveSet.dll
+c:\users\donald\documents\visual studio 2015\Projects\EratosthenesSieveSet\EratosthenesSieveSet\bin\Debug\EratosthenesSieveSet.pdb
+c:\users\donald\documents\visual studio 2015\Projects\EratosthenesSieveSet\EratosthenesSieveSet\obj\Debug\EratosthenesSieveSet.csprojResolveAssemblyReference.cache
+c:\users\donald\documents\visual studio 2015\Projects\EratosthenesSieveSet\EratosthenesSieveSet\obj\Debug\EratosthenesSieveSet.dll
+c:\users\donald\documents\visual studio 2015\Projects\EratosthenesSieveSet\EratosthenesSieveSet\obj\Debug\EratosthenesSieveSet.pdb
+C:\Users\Donald\DonaldsPattern\EratosthenesSieveSet\EratosthenesSieveSet\bin\Debug\EratosthenesSieveSet.dll
+C:\Users\Donald\DonaldsPattern\EratosthenesSieveSet\EratosthenesSieveSet\bin\Debug\EratosthenesSieveSet.pdb
+C:\Users\Donald\DonaldsPattern\EratosthenesSieveSet\EratosthenesSieveSet\obj\Debug\EratosthenesSieveSet.csprojResolveAssemblyReference.cache
+C:\Users\Donald\DonaldsPattern\EratosthenesSieveSet\EratosthenesSieveSet\obj\Debug\EratosthenesSieveSet.dll
+C:\Users\Donald\DonaldsPattern\EratosthenesSieveSet\EratosthenesSieveSet\obj\Debug\EratosthenesSieveSet.pdb

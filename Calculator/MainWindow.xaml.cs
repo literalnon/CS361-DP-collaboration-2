@@ -78,6 +78,18 @@ namespace Calculator
 
         private void EratospheneClick(object sender, RoutedEventArgs e)
         {
+            var constantDialog = new ConstantDialog();
+            constantDialog.Hide();
+            SortedSet<int> set = new SortedSet<int>();
+            if ((bool)constantDialog.ShowDialog())
+                set = constantDialog.resultSet;
+
+            constantDialog = new ConstantDialog();
+            constantDialog.Hide();
+            int n = 0;
+            if ((bool)constantDialog.ShowDialog())
+                n = constantDialog.resultSet.FirstOrDefault();
+            rootFormula = new EratosthenFormula(set, n);
             UpdateFormulaText();
             // ToDo: use external library to implement this
         }

@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BinaryFormula.cs" />
+    <Compile Include="EratosthenFormula.cs" />
     <Compile Include="ConstantDialog.xaml.cs">
       <DependentUpon>ConstantDialog.xaml</DependentUpon>
     </Compile>

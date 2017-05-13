@@ -19,7 +19,7 @@ namespace EratosthenesSieveSet
 
             for (int i = 0; i < n; i++) // и инициализация его всеми единицами
             {
-                arr_simple_digits[i] = 1;
+                arr_simple_digits.Add(1);
             }
 
             for (int i = 2; i < n; i++) // цикл прохода по всему массиву с первого простого числа "2"

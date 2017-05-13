@@ -78,6 +78,14 @@ namespace Calculator
 
         private void EratospheneClick(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+           // rootFormula = ObtainConstant();
+
+>>>>>>> ac6700f79d670677c3831b550d19540979a6c2c3
+>>>>>>> a7c457bc1b20cc7d1c4438b98fb4f75ad38f14f8
             var constDialog = new ConstVariableDialog();
             constDialog.Hide();
             int n = 0;

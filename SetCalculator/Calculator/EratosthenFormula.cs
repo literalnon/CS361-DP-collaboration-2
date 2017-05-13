@@ -12,10 +12,10 @@ namespace Calculator
         SortedSet<int> set;
         int cnt;
 
-        public EratosthenFormula(SortedSet<int> formula_set, int n)
+        public EratosthenFormula(Formula formula, int n)
         {
             cnt = n;
-            set = formula_set;
+            set = formula.Evaluate();
         }
 
         public SortedSet<int> Evaluate()

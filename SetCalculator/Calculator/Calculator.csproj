@@ -52,7 +52,7 @@
   <ItemGroup>
     <Reference Include="EratosthenesSieveSet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\EratosthenesSieveSet\EratosthenesSieveSet\bin\Debug\EratosthenesSieveSet.dll</HintPath>
+      <HintPath>bin\Debug\EratosthenesSieveSet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -85,6 +85,9 @@
     <Compile Include="SymmetricDifferenceFormula.cs" />
     <Compile Include="UnionFormula.cs" />
     <Compile Include="VariableFormula.cs" />
+    <Compile Include="ConstVariableDialog.xaml.cs">
+      <DependentUpon>ConstVariableDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VariableNameDialog.xaml.cs">
       <DependentUpon>VariableNameDialog.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ConstVariableDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="VariableNameDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

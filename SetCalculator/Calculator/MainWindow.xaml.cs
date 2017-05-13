@@ -35,6 +35,7 @@ namespace Calculator
         private Formula ObtainConstant()
         {
             var constantDialog = new ConstantDialog();
+            constantDialog.Hide();
             if ((bool) constantDialog.ShowDialog())
                 return new ConstFormula(constantDialog.resultSet);
             return null;
@@ -77,13 +78,14 @@ namespace Calculator
 
         private void EratospheneClick(object sender, RoutedEventArgs e)
         {
-            var constantDialog = new ConstantDialog();
-            SortedSet<int> set = new SortedSet<int>();
-            if ((bool)constantDialog.ShowDialog())
-                set = constantDialog.resultSet;
-            
-            int n = 42;
-            rootFormula = new EratosthenFormula(set, n);
+            var lhs = ObtainConstant();
+
+            var constDialog = new ConstVariableDialog();
+            constDialog.Hide();
+            int n = 0;
+            if ((bool)constDialog.ShowDialog())
+                n = constDialog.VariableName;
+            rootFormula = new EratosthenFormula(lhs, n);
             UpdateFormulaText();
             // ToDo: use external library to implement this
         }

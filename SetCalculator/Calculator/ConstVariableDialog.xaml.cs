@@ -14,28 +14,28 @@ using System.Windows.Shapes;
 
 namespace Calculator
 {
-    public partial class VariableNameDialog : Window
+    public partial class ConstVariableDialog : Window
     {
-        public string VariableName { get; private set; }
+        public int VariableName { get; private set; }
 
-        public VariableNameDialog()
+        public ConstVariableDialog()
         {
             InitializeComponent();
         }
 
         private bool Validate(string name)
         {
-            return 0 != name.Length && name.All(c => char.IsLetter(c));
+            return 0 != name.Length && name.All(c => char.IsDigit(c));
         }
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validate(ResponseTextBox.Text))
             {
-                MessageBox.Show("Плохое имя переменной");
+                MessageBox.Show("не константа!");
                 return;
             }
-            VariableName = ResponseTextBox.Text;
+            VariableName = int.Parse(ResponseTextBox.Text);
             DialogResult = true;
         }
 

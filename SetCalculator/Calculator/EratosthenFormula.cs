@@ -9,13 +9,13 @@ namespace Calculator
 {
     class EratosthenFormula : Formula
     {
-        SortedSet<int> set;
+        Formula f;
         int cnt;
 
         public EratosthenFormula(Formula formula, int n)
         {
             cnt = n;
-            set = formula.Evaluate();
+            f = formula;
         }
 
         public SortedSet<int> Evaluate()
@@ -23,6 +23,7 @@ namespace Calculator
             var eratostheneFormula = new EratosthenesSieveSet.EratosthenesSieveSet(cnt);
 
             List<int> list = new List<int>();
+            SortedSet<int> set = f.Evaluate();
 
             foreach (int s in set)
                 list.Add(s);
@@ -37,7 +38,7 @@ namespace Calculator
 
         public override string ToString()
         {
-            return "(" + string.Join(", ", set) + ")" + "#" + cnt.ToString();
+            return "(" + f + ")" + "#" + cnt.ToString();
         }
     }
 }

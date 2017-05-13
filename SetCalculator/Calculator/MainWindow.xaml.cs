@@ -78,16 +78,13 @@ namespace Calculator
 
         private void EratospheneClick(object sender, RoutedEventArgs e)
         {
-            var lhs = ObtainConstant();
-
             var constDialog = new ConstVariableDialog();
             constDialog.Hide();
             int n = 0;
             if ((bool)constDialog.ShowDialog())
                 n = constDialog.VariableName;
-            rootFormula = new EratosthenFormula(lhs, n);
+            rootFormula = new EratosthenFormula(rootFormula, n);
             UpdateFormulaText();
-            // ToDo: use external library to implement this
         }
 
         private void CalculateClick(object sender, RoutedEventArgs e)

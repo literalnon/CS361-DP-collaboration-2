@@ -50,9 +50,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EratosthenesSieveSet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\EratosthenesSieveSet.dll</HintPath>
+    <Reference Include="EratosthenesSieveSet">
+      <HintPath>..\..\EratosthenesSieveSet\EratosthenesSieveSet\bin\Debug\EratosthenesSieveSet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

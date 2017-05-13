@@ -9,10 +9,6 @@ namespace Calculator
 {
     class EratosthenFormula : Formula
     {
-<<<<<<< HEAD
-=======
-        //SortedSet<int> set;
->>>>>>> ac6700f79d670677c3831b550d19540979a6c2c3
         Formula f;
         int cnt;
 
@@ -42,11 +38,7 @@ namespace Calculator
 
         public override string ToString()
         {
-<<<<<<< HEAD
             return "(" + f + ")" + "#" + cnt.ToString();
-=======
-            return f + "#" + cnt.ToString();
->>>>>>> ac6700f79d670677c3831b550d19540979a6c2c3
         }
     }
 }

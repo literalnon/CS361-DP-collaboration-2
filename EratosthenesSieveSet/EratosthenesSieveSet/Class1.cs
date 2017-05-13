@@ -11,7 +11,7 @@ namespace EratosthenesSieveSet
         List<int> arr_simple_digits;
         int cnt;
 
-        EratosthenesSieveSet(int n)
+        public EratosthenesSieveSet(int n)
         {
             cnt = n;
 
